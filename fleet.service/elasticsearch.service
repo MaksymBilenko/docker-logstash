@@ -13,5 +13,5 @@ StartLimitBurst=3
 ExecStartPre=/usr/bin/docker pull dockerfile/elasticsearch
 ExecStartPre=-/usr/bin/docker rm elasticsearch
 ExecStartPre=-/usr/bin/mkdir -p /mount/storage/elasticsearch
-ExecStart=/usr/bin/docker run -v /mount/storage/elasticsearch:/data --rm --name elasticsearch --hostname="trav-perk-ci.kyiv.epam.com" --dns=172.17.42.1 -p 9200:9200 -p 9300:9300 dockerfile/elasticsearch
+ExecStart=/usr/bin/docker run -v /mount/storage/elasticsearch:/data --rm --name elasticsearch --hostname="elasticsearch.domain.com" --dns=172.17.42.1 -p 9200:9200 -p 9300:9300 dockerfile/elasticsearch
 ExecStop=/usr/bin/docker stop jenkins
