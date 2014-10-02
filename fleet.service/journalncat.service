@@ -1,0 +1,13 @@
+[Unit]
+Description=Journal redirect to logstash
+After=logstash.service
+Requires=logstash.service
+
+[Service]
+Restart=on-failure
+StartLimitInterval=60s
+StartLimitBurst=3
+TimeoutStartSec=0
+ExecStart=/bin/sh -c '/usr/bin/journalctl -f -o json | /usr/bin/ncat localhost 9290'
+PIDFile=/var/run/journalncat.pid
+ExecStop=/bin/kill -TERM  `cat /var/run/journalncat.pid`
