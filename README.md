@@ -8,6 +8,8 @@ Docker container with Logstash service based on [sath89/jdk7](https://registry.h
      #elastic search is embedded => true
      #for proper working of embedded elasticsearch add aditional port forwarding -p 9200:9200
      WEB='' #disabled to enabe set -e WEB=web
+     
+     docker run -itd -p 9292:9292 -p 4560:4560 -p 9290:9290 -p 9200:9200 -e WEB=web sath89/logstash
 
 **Usage example1 (OLD/LowLevel):**
 
