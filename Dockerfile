@@ -1,4 +1,4 @@
-FROM sath89/docker-ubuntu_jdk:latest
+FROM sath89/docker-ubuntu-jdk:latest
 
 MAINTAINER Maksym Bilenko "sath891@gmail.com"
 
