@@ -3,7 +3,7 @@ FROM sath89/docker-ubuntu-jdk:latest
 MAINTAINER Maksym Bilenko "sath891@gmail.com"
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV LOGSTASH_VERSION 1.4.2
+ENV LOGSTASH_VERSION 1.5.0
 #set WEB to web to have web interface support
 ENV WEB ''
 ENV CONFIG input { log4j { tags => "log4j" } tcp { port => 9290 tags => "tcpin" codec => "json" } } output { elasticsearch { embedded => true } }
