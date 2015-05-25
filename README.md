@@ -2,6 +2,10 @@ docker-logstash
 ===============
 Docker container with Logstash service based on [sath89/jdk7](https://registry.hub.docker.com/u/sath89/ubuntu_jdk7/)
 
+**docker-compose example:**
+
+  [docker-compose.yml](https://github.com/MaksymBilenko/docker-logstash/blob/master/docker-compose.yml)
+
 **Default configuration is:**
 
      input { log4j { tags => "log4j" } tcp { port => 9290 tags => "tcpin" codec => "json" } } output { elasticsearch { embedded => true } }

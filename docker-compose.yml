@@ -1,0 +1,19 @@
+elasticsearch:
+  image: elasticsearch
+
+logstash:
+  image: sath89/logstash
+  environment:
+    CONFIG: input { log4j { tags => "log4j" } tcp { port => 9290 tags => "tcpin" codec => "json" } } output { elasticsearch { host => elasticsearch } }
+  ports:
+   - "9290:9290" #tcpin port
+   - "4560:4560" #log4j port
+  links:
+    - elasticsearch:elasticsearch
+
+kibana:
+  image: sath89/kibana
+  links:
+    - elasticsearch:elasticsearch
+  ports:
+    - "5601:5601" #kibana port
