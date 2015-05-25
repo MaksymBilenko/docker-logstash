@@ -7,9 +7,8 @@ Docker container with Logstash service based on [sath89/jdk7](https://registry.h
      input { log4j { tags => "log4j" } tcp { port => 9290 tags => "tcpin" codec => "json" } } output { elasticsearch { embedded => true } }
      #elastic search is embedded => true
      #for proper working of embedded elasticsearch add aditional port forwarding -p 9200:9200
-     WEB='' #disabled to enabe set -e WEB=web
      
-     docker run -itd -p 9292:9292 -p 4560:4560 -p 9290:9290 -p 9200:9200 -e WEB=web sath89/logstash
+     docker run -itd -p 9292:9292 -p 4560:4560 -p 9290:9290 -p 9200:9200 sath89/logstash
 
 **Usage example1 (OLD/LowLevel):**
 
@@ -17,8 +16,7 @@ Docker container with Logstash service based on [sath89/jdk7](https://registry.h
      /opt/logstash-1.4.2/bin/logstash -e ' \
      input { log4j { tags => "log4j" } \
      tcp { port => 9290 tags => "tcpin" codec => "json" } } \
-     output { elasticsearch { host => "elasticsearch.domain.com" } } \
-     ' web
+     output { elasticsearch { host => "elasticsearch.domain.com" } } '
 
 *This example uses external elasticsearch service. If you want to use embedded - the you could set `embedded => true` in the config. More info [here](http://logstash.net/docs/1.4.2/outputs/elasticsearch)*
 
@@ -27,10 +25,8 @@ Docker container with Logstash service based on [sath89/jdk7](https://registry.h
 
      docker run -i -t --rm --dns=172.17.42.1 --name=logstash -p 9292:9292 -p 4560:4560 -p 9290:9290 \
      -e CONFIG='input { log4j { tags => "log4j" } tcp { port => 9290 tags => "tcpin" codec => "json" } } output { elasticsearch { host => "elasticsearch.domain.com" }' \
-     -e WEB=web \
      sath89/logstash
 
-*If you want to use Web interface at example2 - add environment variable **'WEB=web'***
 
 logstash-log4j-socket
 =====================
